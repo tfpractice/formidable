@@ -1,0 +1,31 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "useBuiltIns": true,
+        "targets": {
+          "node": "current",
+          "chrome": 65,
+          "browsers": ["last 2 versions", "safari 7"]
+        }
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "src": "./",
+          "utils": "utils",
+          "components": "components"
+        }
+      }
+    ]
+  ]
+}
