@@ -348,6 +348,7 @@ const config = {
     "space-infix-ops": 2,
     strict: 1,
     "valid-typeof": 2,
+    "no-debugger": 0,
   },
 };
 

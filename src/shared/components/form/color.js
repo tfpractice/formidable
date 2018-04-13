@@ -9,56 +9,59 @@ import { Form } from "../../utils";
 
 const { ClearForm, TextField } = Form;
 
-const PostBase = ({ handleSubmit, ...props }) => (
-  <Grid container justify="center" alignContent="center" alignItems="center">
-    <Grid item xs={11}>
-      <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          justify="center"
-          alignContent="center"
-          alignItems="center"
-          spacing={40}>
-          <Grid item xs={11}>
-            <Card>
-              <CardHeader title="Color Form" />
-              <CardContent>
-                <Grid
-                  container
-                  justify="center"
-                  alignContent="center"
-                  alignItems="center">
-                  <Grid item xs={11}>
-                    <Field
-                      name="color"
-                      component={TextField}
-                      placeholder="color"
-                      label="color"
-                    />
+const PostBase = ({ handleSubmit, ...props }) => {
+  console.log(`props`, props);
+  return (
+    <Grid container justify="center" alignContent="center" alignItems="center">
+      <Grid item xs={11}>
+        <form onSubmit={handleSubmit}>
+          <Grid
+            container
+            justify="center"
+            alignContent="center"
+            alignItems="center"
+            spacing={40}>
+            <Grid item xs={11}>
+              <Card>
+                <CardHeader title="Color Form" />
+                <CardContent>
+                  <Grid
+                    container
+                    justify="center"
+                    alignContent="center"
+                    alignItems="center">
+                    <Grid item xs={11}>
+                      <Field
+                        name="color"
+                        component={TextField}
+                        placeholder="color"
+                        label="color"
+                      />
+                    </Grid>
                   </Grid>
-                </Grid>
-              </CardContent>
-              <CardActions>
-                <Grid
-                  container
-                  justify="center"
-                  alignContent="center"
-                  alignItems="center">
-                  <Grid item xs={11}>
-                    <Text component="div" align="center">
-                      <Button type="submit">
-                        {props.editing ? `Update` : `Submit`} Post
-                      </Button>
-                    </Text>
+                </CardContent>
+                <CardActions>
+                  <Grid
+                    container
+                    justify="center"
+                    alignContent="center"
+                    alignItems="center">
+                    <Grid item xs={11}>
+                      <Text component="div" align="center">
+                        <Button type="submit" onClick={handleSubmit}>
+                          {props.editing ? `Update` : `Submit`} Post
+                        </Button>
+                      </Text>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </CardActions>
-            </Card>
+                </CardActions>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
-      </form>
+        </form>
+      </Grid>
     </Grid>
-  </Grid>
-);
+  );
+};
 
 export default ClearForm(PostBase);

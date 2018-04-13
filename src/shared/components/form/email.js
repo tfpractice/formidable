@@ -47,7 +47,7 @@ const PostBase = ({ handleSubmit, ...props }) => (
                   <Grid item xs={11}>
                     <Text component="div" align="center">
                       <Button type="submit">
-                        {props.editing ? `Update` : `Submit`} Post
+                        {props.editing ? `Update` : `Submit`} Email
                       </Button>
                     </Text>
                   </Grid>
