@@ -8,7 +8,10 @@
         "targets": {
           "node": "current",
           "chrome": 65,
-          "browsers": ["last 2 versions", "safari 7"]
+          "browsers": [
+            "last 2 versions",
+            "safari 7"
+          ]
         }
       }
     ],
@@ -19,11 +22,14 @@
     [
       "module-resolver",
       {
-        "root": ["./src"],
+        "root": [
+          "./src"
+        ],
         "alias": {
           "src": "./",
-          "utils": "utils",
-          "components": "components"
+          "shared": "shared",
+          "utils": "shared/utils",
+          "components": "shared/components"
         }
       }
     ]

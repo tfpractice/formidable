@@ -15,22 +15,29 @@ const config = {
     ecmaVersion: 7,
     sourceType: "module",
   },
+  // )
   plugins: [
+    "sort-imports-es6-autofix",
     "import",
     "import-order-autofix",
     "prettier",
     "react",
-    "sort-imports-es6-autofix",
   ],
   settings: {
+    "import/ignore": [/shared/],
+
     "import/resolver": {
+      node: {
+        moduleDirectory: ["node_modules"],
+      },
       "babel-module": {
-        alias: {
-          components: "components",
-          src: "./",
-          utils: "utils",
-        },
         root: ["./src"],
+        alias: {
+          src: "./",
+          shared: "./shared",
+          utils: "./shared/utils",
+          components: "./shared/components",
+        },
       },
     },
   },
@@ -75,11 +82,11 @@ const config = {
     "func-names": 0,
     "handle-callback-err": 1,
     "import-order-autofix/order": [
-      0,
+      2,
       {
         groups: [
           ["builtin", "external"],
-          ["index", "internal", "parent", "sibling"],
+          ["internal", "index", "parent", "sibling"],
         ],
         "newlines-between": "always",
       },
@@ -92,12 +99,15 @@ const config = {
         peerDependencies: false,
       },
     ],
+    "import/no-unresolved": [2, { ignore: ["shared"] }],
+    // "import/extensions": 0,
+
     "import/order": [
       2,
       {
         groups: [
           ["builtin", "external"],
-          ["index", "internal", "parent", "sibling"],
+          ["internal", "index", "parent", "sibling"],
         ],
         "newlines-between": "always",
       },
@@ -121,6 +131,7 @@ const config = {
       },
     ],
     "jsx-a11y/href-no-hash": 0,
+    "react/jsx-filename-extension": 0,
     "jsx-quotes": 1,
     "key-spacing": [
       2,
