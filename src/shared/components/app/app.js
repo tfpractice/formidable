@@ -1,8 +1,10 @@
-import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
 import React from "react";
-import Text from "material-ui/Typography";
+import { CardHeader } from "material-ui/Card";
 import { connect } from "react-redux";
+
+import UserForm from "../form/create";
+import { AgeForm, ColorForm, MailForm, NameForm } from "../form/";
 
 const App = props => (
   <Grid container justify="center" alignContent="center" alignItems="center">
@@ -13,15 +15,16 @@ const App = props => (
         alignContent="center"
         alignItems="center">
         <Grid item xs={11}>
-          <div className="App">
-            <header className="App-header">
-              <Text>Welcome to React</Text>
-            </header>
-            <Text>
-              To get started, edit <code>src/App.js</code> and save to reload.
-            </Text>
-          </div>
-          <Button> local DOGS</Button>
+          <CardHeader
+            title={`To get started, edit <code>src/App.js</code> and save to reload.
+          `}
+          />
+        </Grid>
+        <Grid item xs={11}>
+          <NameForm />
+          <ColorForm />
+          <MailForm />
+          <AgeForm />
         </Grid>
       </Grid>
     </Grid>

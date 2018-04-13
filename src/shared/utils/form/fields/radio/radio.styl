@@ -1,0 +1,43 @@
+@import '../../../../../styles/shared/constants_2017.styl'
+@import '../text/text'
+@import '../../../../../styles/shared/guide_2017/index.styl'
+
+transition()
+  transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+  -webkit-transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+  -moz-transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+  -o-transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+
+.radioField
+  famVerlag()
+
+  input[type = 'radio']
+    margin auto 1rem
+    width 20px
+    height 20px
+    border-radius 100%
+    background-color transparent
+
+    famVerlag()
+
+    &:checked
+      border 6px solid primaryColor
+      background-color white
+
+      transition()
+
+    &:focus
+      outline none
+      
+      
+.radioField-label
+  famVerlag()
+  boldWt()
+  
+label
+  .verl
+    boldWt()
+    font-weight bold
+
+
+  

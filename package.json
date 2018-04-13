@@ -21,11 +21,13 @@
     "uid": "^0.0.2"
   },
   "scripts": {
+    "server": "json-server -c  src/server/json-server.json src/server/db.json",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:4000",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

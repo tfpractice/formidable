@@ -1,0 +1,39 @@
+@import '../../../../../styles/shared/constants_2017.styl'
+@import '../text/text'
+@import '../../../../../styles/shared/guide_2017/index.styl'
+
+transition()
+  transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+  -webkit-transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+  -moz-transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+  -o-transition all 0.33s cubic-bezier(0.4, 0, 0.2, 1)
+
+.checkField
+  famVerlag()
+
+  input[type = 'checkbox']
+    margin auto 1rem
+    width 20px
+    height 20px
+    background-color transparent
+
+
+    famVerlag()
+
+    &:checked
+      height 20px
+      height 20px
+      background-color primaryColor
+
+      transition()
+
+      &:after
+        position absolute
+        padding-top 2px
+        padding-left 2px
+        height 20px
+        height 20px
+        content url('https://foodworksimages.imgix.net/checkmark_white-icon.svg?auto=compress')
+
+    &:focus
+      outline none

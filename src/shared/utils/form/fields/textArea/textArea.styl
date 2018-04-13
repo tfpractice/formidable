@@ -1,0 +1,20 @@
+@import '../../../../../styles/shared/constants_2017.styl'
+@import '../text/text'
+
+textarea
+  @extend .textField
+
+  box-sizing border-box
+  margin 0px 0 16px
+  padding 8px 0
+  min-height 100px
+  max-width 100%
+  resize block
+
+  &::placeholder
+    color grey
+
+  &:focus
+    border none
+    border-bottom 1.5px solid primaryColor
+    color primaryColor
