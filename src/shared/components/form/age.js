@@ -6,9 +6,8 @@ import Text from "material-ui/Typography";
 import { Field } from "redux-form";
 
 import { Form } from "../../utils";
-import { withValues } from "../wrappers";
 
-const { ClearForm, TextField } = Form;
+const { WizForm, TextField } = Form;
 
 const PostBase = ({ handleSubmit, ...props }) => (
   <Grid container justify="center" alignContent="center" alignItems="center">
@@ -19,7 +18,8 @@ const PostBase = ({ handleSubmit, ...props }) => (
           justify="center"
           alignContent="center"
           alignItems="center"
-          spacing={40}>
+          spacing={40}
+        >
           <Grid item xs={11}>
             <Card>
               <CardHeader title="Age Form" />
@@ -28,7 +28,8 @@ const PostBase = ({ handleSubmit, ...props }) => (
                   container
                   justify="center"
                   alignContent="center"
-                  alignItems="center">
+                  alignItems="center"
+                >
                   <Grid item xs={11} sm={4}>
                     <Field
                       name="age"
@@ -60,7 +61,8 @@ const PostBase = ({ handleSubmit, ...props }) => (
                   container
                   justify="center"
                   alignContent="center"
-                  alignItems="center">
+                  alignItems="center"
+                >
                   <Grid item xs={11}>
                     <Text component="div" align="center">
                       <Button type="submit">
@@ -78,4 +80,4 @@ const PostBase = ({ handleSubmit, ...props }) => (
   </Grid>
 );
 
-export default ClearForm(PostBase);
+export default WizForm(PostBase);

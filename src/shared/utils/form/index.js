@@ -10,6 +10,13 @@ const onSubmitSuccess = resetSuccess;
 
 const enableReinitialize = true;
 
+export const WizForm = form =>
+  reduxForm({
+    destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true,
+    form: `userWizard`,
+  })(form);
+
 export const ClearForm = form =>
   reduxForm({
     destroyOnUnmount: false,

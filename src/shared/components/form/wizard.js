@@ -1,30 +1,31 @@
 import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
 import React from "react";
-import { reduxForm } from "redux-form";
 
-import { withIndex, withValues } from "../wrappers";
+import { Form } from "../../utils";
+import { withIndex } from "../wrappers";
+
+const { WizForm } = Form;
 
 const Wizard = props => {
   const {
-    index, form, goBack, hasPrev: prev, hasNext: next,
+    index, form, decIndex, incIndex, prev, next,
   } = props;
 
-  const onSubmit = next ? props.advance : props.onSubmit;
+  const onSubmit = next ? incIndex : props.onSubmit;
 
   const current = props.children[index];
 
-  console.log(`props.values`, props.values);
   const through = { onSubmit, prev, form, next };
 
   const stepBack = () => {
     // props.change(current.props.name, ``);
-    goBack();
+    decIndex();
   };
 
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
-      <Grid item xs={3}>
+      <Grid item>
         {prev && (
           <Button size="small" onClick={stepBack}>
             Go Back
@@ -32,16 +33,11 @@ const Wizard = props => {
         )}
       </Grid>
 
-      <Grid item xs={8}>
+      <Grid item xs={10}>
         {current && <current.type {...current.props} {...through} />}
       </Grid>
     </Grid>
   );
 };
 
-const wizForm = reduxForm({
-  destroyOnUnmount: false,
-  forceUnregisterOnUnmount: false,
-});
-
-export default wizForm(withIndex(Wizard));
+export default WizForm(withIndex(Wizard));

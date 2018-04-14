@@ -7,7 +7,7 @@ import { Field } from "redux-form";
 
 import { Form } from "../../utils";
 
-const { ClearForm, TextField } = Form;
+const { WizForm, TextField } = Form;
 
 const NameBase = ({ handleSubmit, ...props }) => (
   <Grid container justify="center" alignContent="center" alignItems="center">
@@ -20,7 +20,8 @@ const NameBase = ({ handleSubmit, ...props }) => (
               container
               justify="center"
               alignContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               <Grid item xs={11} md={6}>
                 <Field
                   name="firstName"
@@ -44,7 +45,8 @@ const NameBase = ({ handleSubmit, ...props }) => (
               container
               justify="center"
               alignContent="center"
-              alignItems="center">
+              alignItems="center"
+            >
               <Grid item xs={11}>
                 <Text component="div" align="center">
                   <Button type="submit">
@@ -60,4 +62,4 @@ const NameBase = ({ handleSubmit, ...props }) => (
   </Grid>
 );
 
-export default ClearForm(NameBase);
+export default WizForm(NameBase);

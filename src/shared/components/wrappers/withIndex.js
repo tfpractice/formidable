@@ -1,4 +1,20 @@
 import React, { Component } from "react";
+import { compose, withHandlers, withProps, withState } from "recompose";
+
+const ixState = withState(`index`, `setIx`, ({ index }) => index || 0);
+
+const nextState = withProps(({ index, children }) => ({
+  next: index < children.length - 1,
+  prev: index > 0,
+}));
+
+const ixHandlers = withHandlers({
+  setIndex: ({ setIx, children }) => ix => setIx(() => ix % children.length),
+  incIndex: ({ setIx, children: c }) => () => setIx(x => (x + 1) % c.length),
+  decIndex: ({ setIx, children: c }) => () => setIx(x => (x - 1) % c.length),
+});
+
+export default compose(ixState, ixHandlers, nextState);
 
 const WithIndex = Base =>
   class extends Component {
@@ -55,4 +71,4 @@ const WithIndex = Base =>
     }
   };
 
-export default WithIndex;
+// export default WithIndex;

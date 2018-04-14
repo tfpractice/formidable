@@ -10,7 +10,7 @@ import { Users } from "../../store";
 import { withValues } from "../wrappers";
 
 const App = props => {
-  console.log(`props.formVals`, props.formVals);
+  console.log(`App.formVals`, props.formVals);
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
       <Grid item xs={11}>
@@ -18,13 +18,13 @@ const App = props => {
           container
           justify="center"
           alignContent="center"
-          alignItems="center">
+          alignItems="center"
+        >
           <Grid item xs={11}>
             <CardHeader title="Creat a User" />
           </Grid>
           <Grid item xs={11}>
             <WizardForm
-              form="userWizard"
               onChange={vals => {
                 console.log(`onChange vals`, vals);
                 props.setValues(vals);
@@ -33,7 +33,8 @@ const App = props => {
               onSubmit={vals => {
                 console.log(`vals`, vals);
                 props.createUser(vals);
-              }}>
+              }}
+            >
               <NameForm />
               <MailForm />
               <AgeForm />
@@ -46,7 +47,10 @@ const App = props => {
   );
 };
 
-//
-const connected = connect(null, Users.actions);
+const mapState = ({ form: { userWizard }}) => ({
+  formVals: userWizard ? userWizard.values : {},
+});
+
+const connected = connect(mapState, Users.actions);
 
 export default connected(withValues(App));
