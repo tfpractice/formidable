@@ -6,6 +6,7 @@ import Text from "material-ui/Typography";
 import { Field } from "redux-form";
 
 import { Form } from "../../utils";
+import { withValues } from "../wrappers";
 
 const { ClearForm, TextField } = Form;
 

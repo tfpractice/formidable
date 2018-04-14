@@ -12,8 +12,10 @@ const enableReinitialize = true;
 
 export const ClearForm = form =>
   reduxForm({
-    onSubmitSuccess,
+    destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true,
     enableReinitialize,
+    form: `userWizard`,
   })(form);
 
 export const TextField = props => {

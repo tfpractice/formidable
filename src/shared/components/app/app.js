@@ -7,9 +7,10 @@ import {
   AgeForm, ColorForm, MailForm, NameForm, WizardForm,
 } from "../form/";
 import { Users } from "../../store";
+import { withValues } from "../wrappers";
 
 const App = props => {
-  console.log(`props`, props);
+  console.log(`props.formVals`, props.formVals);
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
       <Grid item xs={11}>
@@ -24,6 +25,11 @@ const App = props => {
           <Grid item xs={11}>
             <WizardForm
               form="userWizard"
+              onChange={vals => {
+                console.log(`onChange vals`, vals);
+                props.setValues(vals);
+              }}
+              initialValues={props.formVals}
               onSubmit={vals => {
                 console.log(`vals`, vals);
                 props.createUser(vals);
@@ -43,4 +49,4 @@ const App = props => {
 //
 const connected = connect(null, Users.actions);
 
-export default connected(App);
+export default connected(withValues(App));

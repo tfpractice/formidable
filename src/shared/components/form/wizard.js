@@ -3,7 +3,7 @@ import Grid from "material-ui/Grid";
 import React from "react";
 import { reduxForm } from "redux-form";
 
-import { withIndex } from "../wrappers";
+import { withIndex, withValues } from "../wrappers";
 
 const Wizard = props => {
   const {
@@ -14,6 +14,7 @@ const Wizard = props => {
 
   const current = props.children[index];
 
+  console.log(`props.values`, props.values);
   const through = { onSubmit, prev, form, next };
 
   const stepBack = () => {
@@ -21,7 +22,6 @@ const Wizard = props => {
     goBack();
   };
 
-  console.log(`Wizprops`, props);
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
       <Grid item xs={3}>
@@ -40,8 +40,8 @@ const Wizard = props => {
 };
 
 const wizForm = reduxForm({
-  destroyOnUnmount: true,
-  forceUnregisterOnUnmount: true,
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: false,
 });
 
 export default wizForm(withIndex(Wizard));

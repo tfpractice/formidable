@@ -52,7 +52,6 @@ const PostBase = ({ handleSubmit, ...props }) => {
                           label="lastName"
                         />
                       </Grid>
-                      {` `}
                       <Grid item xs={11} md={6}>
                         <Field
                           name="email"
