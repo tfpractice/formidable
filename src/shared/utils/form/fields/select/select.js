@@ -1,24 +1,14 @@
 import Grid from "material-ui/Grid";
-import Input from "material-ui/Input";
 import React from "react";
-import TextInput from "material-ui/TextField";
-import { FormControl, FormHelperText } from "material-ui/Form";
+import { FormHelperText } from "material-ui/Form";
 
 import SelectBase from "./base";
 
-const SelectList = ({
-  input,
-  children,
-  meta: { touched, error, warning },
-  ...rest
-}) => (
+const SelectList = ({ input, meta: { touched, error, warning }, ...rest }) => (
   <Grid container justify="center" alignContent="center" alignItems="center">
     <Grid item xs={11}>
-      <SelectBase inputProps={input} {...rest} {...input}>
-        {children}
-      </SelectBase>
+      <SelectBase inputProps={input} {...rest} {...input} />
     </Grid>
-
     <Grid item xs={11}>
       {touched &&
         ((error && (

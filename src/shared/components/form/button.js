@@ -31,7 +31,7 @@ export const NextBtn = props => (
 
 export const SubmitBtn = props => (
   <Text component="div" align="center">
-    <Button variant="raised" color="secondary" {...props}>
+    <Button variant="raised" color="primary" {...props}>
       Submit
     </Button>
   </Text>

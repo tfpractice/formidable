@@ -46,6 +46,7 @@ const PostBase = ({ handleSubmit, stepBack, ...props }) => (
                   justify="center"
                   alignContent="center"
                   alignItems="center"
+                  spacing={40}
                 >
                   <Grid item>
                     {props.prev && <BackBtn onClick={stepBack} />}

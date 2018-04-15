@@ -1,11 +1,6 @@
-import ArrowBack from "@material-ui/icons/ArrowBack";
-
-import Button from "material-ui/Button";
 import Card, { CardActions, CardContent, CardHeader } from "material-ui/Card";
 import Grid from "material-ui/Grid";
-import Icon from "material-ui/Icon";
 import React from "react";
-import Text from "material-ui/Typography";
 import { Field } from "redux-form";
 
 import { BackBtn, NextBtn, SubmitBtn } from "./button";
@@ -52,6 +47,7 @@ const NameBase = ({ handleSubmit, stepBack, ...props }) => (
               justify="center"
               alignContent="center"
               alignItems="center"
+              spacing={40}
             >
               <Grid item>{props.prev && <BackBtn onClick={stepBack} />}</Grid>
               <Grid item>
