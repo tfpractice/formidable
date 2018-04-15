@@ -1,16 +1,11 @@
-import ArrowBack from "@material-ui/icons/ArrowBack";
-import ArrowForward from "@material-ui/icons/ArrowForward";
-
-import Button from "material-ui/Button";
 import Card, { CardActions, CardContent, CardHeader } from "material-ui/Card";
 import Grid from "material-ui/Grid";
-import Icon from "material-ui/Icon";
 import React from "react";
-import Text from "material-ui/Typography";
 import { connect } from "react-redux";
 import { Field } from "redux-form";
 import { MenuItem } from "material-ui/Menu";
 
+import { BackBtn, NextBtn, SubmitBtn } from "./button";
 import { Form } from "../../utils";
 import { Users } from "../../store";
 
@@ -18,11 +13,15 @@ const {
   constants: { COLOR_OTHER, COLORS },
 } = Users;
 
-const { WizForm, TextField, SelectList } = Form;
+// import { required } from './va';
+const {
+  WizForm, TextField, required, Single, Radio,
+} = Form;
 
 const PostBase = ({ handleSubmit, stepBack, ...props }) => {
-  console.log(`props`, props);
+  const a = 0;
 
+  console.log(`props`, props);
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
       <Grid item xs={11}>
@@ -47,24 +46,40 @@ const PostBase = ({ handleSubmit, stepBack, ...props }) => {
                     <Grid item xs={11}>
                       <Field
                         name="color"
-                        component={SelectList}
+                        component={Radio}
                         placeholder="color"
                         label="color"
+                        type="radio"
+                        validate={[ required ]}
                       >
-                        {` `}
-                        {COLORS.map(a => (
-                          <MenuItem key={a} value={a}>
-                            {a}
-                          </MenuItem>
-                        ))}
+                        <Grid
+                          container
+                          justify="center"
+                          alignContent="center"
+                          alignItems="center"
+                        >
+                          {COLORS.map(a => (
+                            <Grid item key={a} xs={6} sm={3}>
+                              <Field
+                                name="color"
+                                label={a}
+                                type="radio"
+                                component={Single}
+                                value={a}
+                              />
+                            </Grid>
+                          ))}
+                        </Grid>
                       </Field>
                       {props.formVals.color === COLOR_OTHER && (
-                        <Field
-                          name="color_other"
-                          component={TextField}
-                          placeholder="color"
-                          label="color"
-                        />
+                        <Grid item xs={11}>
+                          <Field
+                            name="color_other"
+                            component={TextField}
+                            placeholder="color"
+                            label="color"
+                          />
+                        </Grid>
                       )}
                     </Grid>
                   </Grid>
@@ -75,39 +90,17 @@ const PostBase = ({ handleSubmit, stepBack, ...props }) => {
                     justify="center"
                     alignContent="center"
                     alignItems="center"
+                    spacing={40}
                   >
                     <Grid item>
-                      {props.prev && (
-                        <Text component="div" align="center">
-                          <Button
-                            variant="fab"
-                            color="secondary"
-                            onClick={stepBack}
-                          >
-                            <Icon>
-                              <ArrowBack />
-                            </Icon>
-                          </Button>
-                        </Text>
-                      )}
+                      {props.prev && <BackBtn onClick={stepBack} />}
                     </Grid>
                     <Grid item>
-                      <Text component="div" align="center">
-                        <Button
-                          variant="fab"
-                          type="submit"
-                          onClick={handleSubmit}
-                        >
-                          {props.next ? (
-                            <Icon>
-                              <ArrowForward />
-                            </Icon>
-                          ) : (
-                            `Submit`
-                          )}
-                          {` `}
-                        </Button>
-                      </Text>
+                      {props.next ? (
+                        <NextBtn onClick={handleSubmit} />
+                      ) : (
+                        <SubmitBtn onClick={handleSubmit} />
+                      )}
                     </Grid>
                   </Grid>
                 </CardActions>

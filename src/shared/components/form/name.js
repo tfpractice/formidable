@@ -1,12 +1,9 @@
-import ArrowBack from "@material-ui/icons/ArrowBack";
-import Button from "material-ui/Button";
 import Card, { CardActions, CardContent, CardHeader } from "material-ui/Card";
 import Grid from "material-ui/Grid";
-import Icon from "material-ui/Icon";
 import React from "react";
-import Text from "material-ui/Typography";
 import { Field } from "redux-form";
 
+import { BackBtn, NextBtn, SubmitBtn } from "./button";
 import { Form } from "../../utils";
 
 const { WizForm, required, TextField } = Form;
@@ -50,22 +47,15 @@ const NameBase = ({ handleSubmit, stepBack, ...props }) => (
               justify="center"
               alignContent="center"
               alignItems="center"
+              spacing={40}
             >
-              <Grid item xs={6}>
-                {props.prev && (
-                  <Text component="div" align="center">
-                    <Button variant="fab" onClick={stepBack}>
-                      <Icon>
-                        <ArrowBack />
-                      </Icon>
-                    </Button>
-                  </Text>
+              <Grid item>{props.prev && <BackBtn onClick={stepBack} />}</Grid>
+              <Grid item>
+                {props.next ? (
+                  <NextBtn onClick={handleSubmit} />
+                ) : (
+                  <SubmitBtn onClick={handleSubmit} />
                 )}
-              </Grid>
-              <Grid item xs={6}>
-                <Text component="div" align="center">
-                  <Button type="submit">Submit Name</Button>
-                </Text>
               </Grid>
             </Grid>
           </CardActions>
