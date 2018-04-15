@@ -1,18 +1,20 @@
 import uid from "uid";
 
+import { AGE_0 } from "./constants";
+
 export const user = (
   firstName = `firstName`,
   lastName = `lastName`,
   email = `valid@email.com`,
-  ageGroup = `1`,
-  height = 100,
+  age = AGE_0,
+  height = { ft: 5, in: 11 },
   color = `Blue`,
   id = uid()
 ) => ({
   firstName,
   lastName,
   email,
-  ageGroup,
+  age,
   height,
   color,
   id,
