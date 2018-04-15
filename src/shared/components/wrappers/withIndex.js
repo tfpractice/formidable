@@ -16,7 +16,7 @@ const ixHandlers = withHandlers({
 
 export default compose(ixState, ixHandlers, nextState);
 
-const WithIndex = Base =>
+const WithIndexManual = Base =>
   class extends Component {
     constructor(props) {
       super(props);
@@ -70,5 +70,3 @@ const WithIndex = Base =>
       return <Base {...this.props} {...through} />;
     }
   };
-
-// export default WithIndex;

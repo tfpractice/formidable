@@ -3,7 +3,6 @@ import Grid from "material-ui/Grid";
 import React from "react";
 import { connect } from "react-redux";
 import { Field } from "redux-form";
-import { MenuItem } from "material-ui/Menu";
 
 import { BackBtn, NextBtn, SubmitBtn } from "./button";
 import { Form } from "../../utils";
@@ -13,105 +12,99 @@ const {
   constants: { COLOR_OTHER, COLORS },
 } = Users;
 
-// import { required } from './va';
 const {
   WizForm, TextField, required, Single, Radio,
 } = Form;
 
-const PostBase = ({ handleSubmit, stepBack, ...props }) => {
-  const a = 0;
-
-  console.log(`props`, props);
-  return (
-    <Grid container justify="center" alignContent="center" alignItems="center">
-      <Grid item xs={11}>
-        <form onSubmit={handleSubmit}>
-          <Grid
-            container
-            justify="center"
-            alignContent="center"
-            alignItems="center"
-            spacing={40}
-          >
-            <Grid item xs={11}>
-              <Card>
-                <CardHeader title="Color Form" />
-                <CardContent>
-                  <Grid
-                    container
-                    justify="center"
-                    alignContent="center"
-                    alignItems="center"
-                  >
-                    <Grid item xs={11}>
-                      <Field
-                        name="color"
-                        component={Radio}
-                        placeholder="color"
-                        label="color"
-                        type="radio"
-                        validate={[ required ]}
+const PostBase = ({ handleSubmit, stepBack, ...props }) => (
+  <Grid container justify="center" alignContent="center" alignItems="center">
+    <Grid item xs={11}>
+      <form onSubmit={handleSubmit}>
+        <Grid
+          container
+          justify="center"
+          alignContent="center"
+          alignItems="center"
+          spacing={40}
+        >
+          <Grid item xs={11}>
+            <Card>
+              <CardHeader title="Color Form" />
+              <CardContent>
+                <Grid
+                  container
+                  justify="center"
+                  alignContent="center"
+                  alignItems="center"
+                >
+                  <Grid item xs={11}>
+                    <Field
+                      name="color"
+                      component={Radio}
+                      placeholder="color"
+                      label="color"
+                      type="radio"
+                      validate={[ required ]}
+                    >
+                      <Grid
+                        container
+                        justify="center"
+                        alignContent="center"
+                        alignItems="center"
                       >
-                        <Grid
-                          container
-                          justify="center"
-                          alignContent="center"
-                          alignItems="center"
-                        >
-                          {COLORS.map(a => (
-                            <Grid item key={a} xs={6} sm={3}>
-                              <Field
-                                name="color"
-                                label={a}
-                                type="radio"
-                                component={Single}
-                                value={a}
-                              />
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Field>
-                      {props.formVals.color === COLOR_OTHER && (
-                        <Grid item xs={11}>
-                          <Field
-                            name="color_other"
-                            component={TextField}
-                            placeholder="color"
-                            label="color"
-                          />
-                        </Grid>
-                      )}
-                    </Grid>
+                        {COLORS.map(a => (
+                          <Grid item key={a} xs={6} sm={3}>
+                            <Field
+                              name="color"
+                              label={a}
+                              type="radio"
+                              component={Single}
+                              value={a}
+                            />
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </Field>
+                    {props.formVals.color === COLOR_OTHER && (
+                      <Grid item xs={11}>
+                        <Field
+                          name="color_other"
+                          component={TextField}
+                          placeholder="color"
+                          label="color"
+                        />
+                      </Grid>
+                    )}
                   </Grid>
-                </CardContent>
-                <CardActions>
-                  <Grid
-                    container
-                    justify="center"
-                    alignContent="center"
-                    alignItems="center"
-                    spacing={40}
-                  >
-                    <Grid item>
-                      {props.prev && <BackBtn onClick={stepBack} />}
-                    </Grid>
-                    <Grid item>
-                      {props.next ? (
-                        <NextBtn onClick={handleSubmit} />
-                      ) : (
-                        <SubmitBtn onClick={handleSubmit} />
-                      )}
-                    </Grid>
+                </Grid>
+              </CardContent>
+              <CardActions>
+                <Grid
+                  container
+                  justify="center"
+                  alignContent="center"
+                  alignItems="center"
+                  spacing={40}
+                >
+                  <Grid item>
+                    {props.prev && <BackBtn onClick={stepBack} />}
                   </Grid>
-                </CardActions>
-              </Card>
-            </Grid>
+                  <Grid item>
+                    {props.next ? (
+                      <NextBtn onClick={handleSubmit} />
+                    ) : (
+                      <SubmitBtn onClick={handleSubmit} />
+                    )}
+                  </Grid>
+                </Grid>
+              </CardActions>
+            </Card>
           </Grid>
-        </form>
-      </Grid>
+        </Grid>
+      </form>
     </Grid>
-  );
-};
+  </Grid>
+);
 
 const mapState = ({ form: { userWizard }}) => ({
   formVals: userWizard ? userWizard.values : { color: `` },

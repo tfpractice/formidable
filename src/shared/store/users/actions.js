@@ -1,11 +1,5 @@
-import { addUser, dropUser, editUser, update } from "./operations";
-import {
-  CREATE_USER,
-  DELETE_USER,
-  GET_USERS,
-  SET_USERS,
-  UPDATE_USER,
-} from "./constants";
+import { addUser, dropUser, editUser } from "./operations";
+import { CREATE_USER, DELETE_USER, SET_USERS, UPDATE_USER } from "./constants";
 
 const set = arr => state => arr;
 
