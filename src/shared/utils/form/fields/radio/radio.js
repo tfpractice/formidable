@@ -1,27 +1,24 @@
-import React from 'react';
+import Grid from "material-ui/Grid";
+import Input from "material-ui/Input";
+import React from "react";
+
+import RadioBase from "./base";
 
 const RadioBtn = ({
   input,
-  label,
-  type,
-  info,
-  className,
+  children,
   meta: { touched, error, warning },
   ...rest
-}) => {
-  const lbClass = `radioBtn-label ${error && 'error'}`;
-  const inClass = `radioBtn-input input-large ${error && 'error'}`;
-
-  return (
-    <div {...rest} className={`radioBtn ${className}`}>
-      <label className={lbClass}>{label}</label>
-      <input className={inClass} type="radio" placeholder={label} {...input} />
-      {info && <p className="radioBtn-legend legend">{info}</p>}
-      {touched &&
-        ((error && <p className="radioBtn-error error"> {error}</p>) ||
-          (warning && <p className="radioBtn-legend legend">{warning}</p>))}
-    </div>
-  );
-};
+}) => (
+  <Grid container justify="center" alignContent="center" alignItems="center">
+    <Grid item xs={11}>
+      <RadioBase {...input} {...rest}>
+        {touched &&
+          ((error && <p className="radioField-error error"> {error}</p>) ||
+            (warning && <p className="radioField-legend legend">{warning}</p>))}
+      </RadioBase>
+    </Grid>
+  </Grid>
+);
 
 export default RadioBtn;

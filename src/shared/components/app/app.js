@@ -9,6 +9,10 @@ import {
 import { Users } from "../../store";
 import { withValues } from "../wrappers";
 
+const {
+  operations: { user },
+} = Users;
+
 const App = props => {
   console.log(`App.formVals`, props.formVals);
   return (
@@ -48,7 +52,7 @@ const App = props => {
 };
 
 const mapState = ({ form: { userWizard }}) => ({
-  formVals: userWizard ? userWizard.values : {},
+  formVals: userWizard ? userWizard.values : user(),
 });
 
 const connected = connect(mapState, Users.actions);

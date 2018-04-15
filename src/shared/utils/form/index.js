@@ -4,6 +4,10 @@ import Text from "material-ui/Typography";
 import TextInput from "material-ui/TextField";
 import { reduxForm } from "redux-form";
 
+export * from "./fields";
+
+export * from "./validate";
+
 export const resetSuccess = (res, dispatch, { reset }) => reset();
 
 const onSubmitSuccess = resetSuccess;

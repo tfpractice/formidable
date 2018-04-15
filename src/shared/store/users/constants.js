@@ -8,6 +8,32 @@ export const UPDATE_USER = `UPDATE_USER`;
 
 export const DELETE_USER = `DELETE_USER`;
 
+export const AGE_0 = `17 or younger`;
+
+export const AGE_1 = `18-25`;
+
+export const AGE_2 = `26-35`;
+
+export const AGE_3 = `36-45`;
+
+export const RED = `Red`;
+
+export const ORANGE = `Orange`;
+
+export const YELLOW = `Yellow`;
+
+export const GREEN = `Green`;
+
+export const BLUE = `Blue`;
+
+export const PURPLE = `Purple`;
+
+export const COLOR_OTHER = `Other`;
+
+export const AGES = [ AGE_0, AGE_1, AGE_2, AGE_3 ];
+
+export const COLORS = [ RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, COLOR_OTHER ];
+
 export const USER_ACTIONS = new Set([
   SET_USERS,
   UPDATE_USER,
