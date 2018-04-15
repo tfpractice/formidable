@@ -14,8 +14,6 @@ const PostBase = ({ handleSubmit, ...props }) => {
 
   const title = props.editing ? `Edit Post Form` : `New Post Form`;
 
-  const url = props.editing ? `/posts/${props.post.id}` : `/posts`;
-
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
       <Grid item xs={11}>
@@ -25,7 +23,8 @@ const PostBase = ({ handleSubmit, ...props }) => {
             justify="center"
             alignContent="center"
             alignItems="center"
-            spacing={40}>
+            spacing={40}
+          >
             <Grid item xs={11}>
               <Card>
                 <CardHeader title={title} style={style} />
@@ -35,7 +34,8 @@ const PostBase = ({ handleSubmit, ...props }) => {
                       container
                       justify="center"
                       alignContent="center"
-                      alignItems="center">
+                      alignItems="center"
+                    >
                       <Grid item xs={11} md={6}>
                         <Field
                           name="firstName"
@@ -102,7 +102,8 @@ const PostBase = ({ handleSubmit, ...props }) => {
                     container
                     justify="center"
                     alignContent="center"
-                    alignItems="center">
+                    alignItems="center"
+                  >
                     <Grid item xs={11}>
                       <Text component="div" align="center">
                         <Field
@@ -124,7 +125,8 @@ const PostBase = ({ handleSubmit, ...props }) => {
                     container
                     justify="center"
                     alignContent="center"
-                    alignItems="center">
+                    alignItems="center"
+                  >
                     <Grid item xs={11}>
                       <Text component="div" align="center">
                         <Button type="submit">

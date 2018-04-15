@@ -1,16 +1,11 @@
-import ArrowBack from "@material-ui/icons/ArrowBack";
-import ArrowForward from "@material-ui/icons/ArrowForward";
-
-import Button from "material-ui/Button";
 import Card, { CardActions, CardContent, CardHeader } from "material-ui/Card";
 import Grid from "material-ui/Grid";
-import Icon from "material-ui/Icon";
 import React from "react";
-import Text from "material-ui/Typography";
 import { connect } from "react-redux";
 import { Field } from "redux-form";
 import { MenuItem } from "material-ui/Menu";
 
+import { BackBtn, NextBtn, SubmitBtn } from "./button";
 import { Form } from "../../utils";
 import { Users } from "../../store";
 
@@ -21,7 +16,7 @@ const {
 const { WizForm, TextField, SelectList } = Form;
 
 const PostBase = ({ handleSubmit, stepBack, ...props }) => {
-  console.log(`props`, props);
+  const a = 0;
 
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
@@ -51,7 +46,6 @@ const PostBase = ({ handleSubmit, stepBack, ...props }) => {
                         placeholder="color"
                         label="color"
                       >
-                        {` `}
                         {COLORS.map(a => (
                           <MenuItem key={a} value={a}>
                             {a}
@@ -77,37 +71,14 @@ const PostBase = ({ handleSubmit, stepBack, ...props }) => {
                     alignItems="center"
                   >
                     <Grid item>
-                      {props.prev && (
-                        <Text component="div" align="center">
-                          <Button
-                            variant="fab"
-                            color="secondary"
-                            onClick={stepBack}
-                          >
-                            <Icon>
-                              <ArrowBack />
-                            </Icon>
-                          </Button>
-                        </Text>
-                      )}
+                      {props.prev && <BackBtn onClick={stepBack} />}
                     </Grid>
                     <Grid item>
-                      <Text component="div" align="center">
-                        <Button
-                          variant="fab"
-                          type="submit"
-                          onClick={handleSubmit}
-                        >
-                          {props.next ? (
-                            <Icon>
-                              <ArrowForward />
-                            </Icon>
-                          ) : (
-                            `Submit`
-                          )}
-                          {` `}
-                        </Button>
-                      </Text>
+                      {props.next ? (
+                        <NextBtn onClick={handleSubmit} />
+                      ) : (
+                        <SubmitBtn onClick={handleSubmit} />
+                      )}
                     </Grid>
                   </Grid>
                 </CardActions>

@@ -10,7 +10,7 @@ const SelectBase = ({ label, info, children, ...props }) => (
       <InputLabel htmlFor={props.name}>{label}</InputLabel>
     </Grid>
     <Grid item xs={11}>
-      <Select {...props} type="select">
+      <Select {...props} fullWidth type="select">
         {children}
       </Select>
     </Grid>

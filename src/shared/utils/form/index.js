@@ -39,7 +39,7 @@ export const TextField = props => {
   return (
     <Grid container justify="center" alignContent="center" alignItems="center">
       <Grid item xs={11} className={asyncValidating ? `async-validating` : ``}>
-        <TextInput inputProps={input} {...rest} />
+        <TextInput inputProps={input} fullWidth {...input} {...rest} />
       </Grid>
       <Grid item xs={11}>
         {touched && error && <Text align="center">{error}</Text>}
