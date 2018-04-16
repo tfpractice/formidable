@@ -8,6 +8,7 @@
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
     "jasmine-matchers": "^0.2.3",
     "material-ui": "^1.0.0-beta.41",
     "react": "^16.3.1",

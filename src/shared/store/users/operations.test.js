@@ -8,17 +8,13 @@ import {
   diffID,
   dropUser,
   editUser,
-  email,
   firstName,
   hasUser,
   height,
   id,
-  idSet,
   lastName,
   sameID,
   setFName,
-  setId,
-  update,
   updateById,
   user,
   weight,
@@ -129,7 +125,7 @@ describe(`user operations`, () => {
           ).toEqual(`john`);
         });
       });
-    }); // ////
+    });
   });
   describe(`collections`, () => {
     describe(`hasUser`, () => {
@@ -144,12 +140,12 @@ describe(`user operations`, () => {
     });
     describe(`appendUser`, () => {
       it(`adds a user object to a collections of users`, () => {
-        expect(appendUser(myUser)([])).toContain(myUser);
+        expect(appendUser(myUser)([])).toContainEqual(myUser);
       });
     });
     describe(`addUser`, () => {
       it(`appends a user to a collection if the user is not present`, () => {
-        expect(addUser(myUser)([])).toContain(myUser);
+        expect(addUser(myUser)([])).toContainEqual(myUser);
       });
       it(`doesnt append anything to a collection if the user is already present`, () => {
         expect(addUser(myUser)([ myUser ]).length).toEqual(1);

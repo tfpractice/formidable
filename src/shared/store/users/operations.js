@@ -1,13 +1,17 @@
+import faker from "faker";
 import uid from "uid";
 
 import { AGE_0 } from "./constants";
 
 export const user = (
-  firstName = `firstName`,
-  lastName = `lastName`,
-  email = `valid@email.com`,
+  firstName = faker.name.firstName(),
+  lastName = faker.name.lastName(),
+  email = faker.internet.exampleEmail(),
   age = AGE_0,
-  height = { ft: 5, in: 11 },
+  height = {
+    ft: faker.random.number({ min: 0, max: 10 }),
+    in: faker.random.number({ min: 0, max: 12 }),
+  },
   weight = ``,
   color = `Blue`,
   id = uid()
@@ -82,7 +86,7 @@ export const hasUser = (nxt = user()) => users => idSet(users).has(id(nxt));
 
 export const xHasUser = (nxt = user()) => users => !hasUser(nxt)(users);
 
-export const appendUser = nxt => users => users.concat(nxt);
+export const appendUser = nxt => users => users.concat(copy(nxt));
 
 export const addUser = nxt => users =>
   hasUser(nxt)(users) ? users : appendUser(nxt)(users);
