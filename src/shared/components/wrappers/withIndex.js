@@ -3,7 +3,7 @@ import { compose, withHandlers, withProps, withState } from "recompose";
 
 const ixState = withState(`index`, `setIx`, ({ index }) => index || 0);
 
-const nextState = withProps(({ index, children }) => ({
+const nextProps = withProps(({ index, children }) => ({
   next: index < children.length - 1,
   prev: index > 0,
 }));
@@ -11,10 +11,11 @@ const nextState = withProps(({ index, children }) => ({
 const ixHandlers = withHandlers({
   setIndex: ({ setIx, children }) => ix => setIx(() => ix % children.length),
   incIndex: ({ setIx, children: c }) => () => setIx(x => (x + 1) % c.length),
-  decIndex: ({ setIx, children: c }) => () => setIx(x => (x - 1) % c.length),
+  decIndex: ({ setIx, children: c }) => () =>
+    setIx(x => (x < 1 ? 0 : (x - 1) % c.length)),
 });
 
-export default compose(ixState, ixHandlers, nextState);
+export default compose(ixState, nextProps, ixHandlers);
 
 const WithIndexManual = Base =>
   class extends Component {

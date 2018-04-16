@@ -170,7 +170,18 @@ const config = {
         beforeLineComment: true,
       },
     ],
-    "max-len": [2, 80],
+    "max-len": [
+      2,
+      80,
+      {
+        ignoreComments: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
     "new-cap": 2,
     "newline-per-chained-call": [
       2,
