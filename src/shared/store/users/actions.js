@@ -1,4 +1,6 @@
-import { addUser, dropUser, editUser } from "./operations";
+import axios from "axios";
+
+import { addUser, dropUser, editUser, user } from "./operations";
 import { CREATE_USER, DELETE_USER, SET_USERS, UPDATE_USER } from "./constants";
 
 const set = arr => state => arr;
@@ -22,3 +24,15 @@ export const deleteUser = user => ({
   type: DELETE_USER,
   curry: dropUser(user),
 });
+
+export const getUsers = user => ({
+  type: DELETE_USER,
+  curry: dropUser(user),
+});
+
+const reqUSers = () => dispatch =>
+  axios
+    .get(`http://localhost:4000/users`)
+    .then(({ data }) => dispatch(setUsers(data)));
+
+reqUSers();

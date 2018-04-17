@@ -1,19 +1,25 @@
 import faker from "faker";
 import uid from "uid";
 
-import { AGE_0 } from "./constants";
+import { AGE_0, AGES, COLORS } from "./constants";
+
+const randAge = () =>
+  AGES[faker.random.number({ min: 0, max: AGES.length - 1 })];
+
+const randColor = () =>
+  COLORS[faker.random.number({ min: 0, max: COLORS.length - 1 })];
 
 export const user = (
   firstName = faker.name.firstName(),
   lastName = faker.name.lastName(),
   email = faker.internet.exampleEmail(),
-  age = AGE_0,
+  age = randAge(),
   height = {
     ft: faker.random.number({ min: 0, max: 10 }),
     in: faker.random.number({ min: 0, max: 12 }),
   },
   weight = ``,
-  color = `Blue`,
+  color = randColor(),
   id = uid()
 ) => ({
   firstName,

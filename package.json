@@ -10,7 +10,9 @@
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jasmine-matchers": "^0.2.3",
+    "json-server": "^0.12.1",
     "material-ui": "^1.0.0-beta.41",
+    "nodemon": "^1.17.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
@@ -23,13 +25,14 @@
     "uid": "^0.0.2"
   },
   "scripts": {
-    "server": "json-server -c  src/server/json-server.json src/server/db.json",
+    "cc": "concurrently \"yarn server\" \"yarn start\"",
+    "server":
+      "nodemon -i db.json -V --exec babel-node --presets=env -- src/server",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:4000",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
