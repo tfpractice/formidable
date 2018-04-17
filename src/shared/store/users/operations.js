@@ -9,6 +9,17 @@ const randAge = () =>
 const randColor = () =>
   COLORS[faker.random.number({ min: 0, max: COLORS.length - 1 })];
 
+export const emptyUser = () => ({
+  firstName: ``,
+  lastName: ``,
+  email: ``,
+  age: ``,
+  height: ``,
+  color: ``,
+  id: uid(),
+  weight: ``,
+});
+
 export const user = (
   firstName = faker.name.firstName(),
   lastName = faker.name.lastName(),

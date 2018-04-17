@@ -13,7 +13,7 @@ const {
 } = Users;
 
 const {
-  WizForm, TextField, required, Radio, Single, SelectList,
+  WizForm, TextField, isNum, required, Radio, Single, SelectList,
 } = Form;
 
 const PostBase = ({ handleSubmit, stepBack, ...props }) => (
@@ -107,6 +107,7 @@ const PostBase = ({ handleSubmit, stepBack, ...props }) => (
                   component={TextField}
                   placeholder="weight"
                   label="weight"
+                  validate={[ isNum ]}
                 />
               </Grid>
             </Grid>

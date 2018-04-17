@@ -1,6 +1,6 @@
-import users from "./reducer";
 import { copy, hasUser, setFName } from "./operations";
 import { createUser, deleteUser, updateUser } from "./actions";
+import { dummyUsers as users } from "./reducer";
 
 const myUsers = users();
 

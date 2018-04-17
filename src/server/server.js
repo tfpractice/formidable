@@ -1,12 +1,12 @@
 import jsonServer, { router } from "json-server";
-import { createReadStream, createWriteStream, writeFile } from "fs";
+import { createReadStream, createWriteStream } from "fs";
 import { Readable } from "stream";
 import { resolve } from "path";
 
 import { Users } from "../shared/store";
 
 const {
-  reducer,
+  dummyUsers,
   operations: { addUser },
 } = Users;
 
@@ -73,7 +73,7 @@ const updateDB = users =>
     .then(pipeTo(writeDB()))
     .catch(console.error);
 
-const defaultDB = () => updateDB(reducer());
+const defaultDB = () => updateDB(dummyUsers());
 
 const initDB = () =>
   checkDB()
