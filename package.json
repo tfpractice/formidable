@@ -25,13 +25,12 @@
     "uid": "^0.0.2"
   },
   "scripts": {
-    "cc": "concurrently \"yarn server\" \"yarn start\"",
-    "server":
-      "nodemon -i db.json -V --exec babel-node --presets=env -- src/server",
-    "start": "react-scripts start",
+    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon -i db.json -V --exec babel-node --presets=env -- src/server"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
