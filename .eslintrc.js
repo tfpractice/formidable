@@ -4,6 +4,7 @@ const config = {
     commonjs: true,
     es6: true,
     node: true,
+    "jest/globals": true,
   },
   extends: ["airbnb", "plugin:react/recommended", "prettier", "prettier/react"],
   parser: "babel-eslint",
@@ -22,6 +23,7 @@ const config = {
     "import-order-autofix",
     "prettier",
     "react",
+    "jest",
   ],
   settings: {
     "import/ignore": [/shared/],
@@ -168,7 +170,18 @@ const config = {
         beforeLineComment: true,
       },
     ],
-    "max-len": [2, 80],
+    "max-len": [
+      2,
+      80,
+      {
+        ignoreComments: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
     "new-cap": 2,
     "newline-per-chained-call": [
       2,
