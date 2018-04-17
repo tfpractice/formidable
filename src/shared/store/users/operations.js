@@ -94,10 +94,10 @@ export const xHasUser = (nxt = user()) => users => !hasUser(nxt)(users);
 
 export const appendUser = nxt => users => users.concat(copy(nxt));
 
-export const addUser = nxt => users =>
-  hasUser(nxt)(users) ? users : appendUser(nxt)(users);
-
 export const editUser = nxt => users =>
   hasUser(nxt)(users) ? users.map(updateById(nxt)) : appendUser(nxt)(users);
+
+export const addUser = nxt => users =>
+  hasUser(nxt)(users) ? editUser(nxt)(users) : appendUser(nxt)(users);
 
 export const dropUser = nxt => users => users.filter(diffID(nxt));

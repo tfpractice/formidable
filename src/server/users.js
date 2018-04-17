@@ -10,9 +10,6 @@ const FILE_ERR = `ENOENT`;
 
 export const USR_PATH = `${dir}/db.json`;
 
-console.log(`dir`, dir);
-console.log(`USR_PATH`, USR_PATH);
-
 users.get(`/`, (req, res) => res.send(`you went to users`));
 users.get(`/users`, (req, res) => {
   res.writeHead(200);
