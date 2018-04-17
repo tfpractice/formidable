@@ -4,6 +4,7 @@ const config = {
     commonjs: true,
     es6: true,
     node: true,
+    "jest/globals": true,
   },
   extends: ["airbnb", "plugin:react/recommended", "prettier", "prettier/react"],
   parser: "babel-eslint",
@@ -15,22 +16,30 @@ const config = {
     ecmaVersion: 7,
     sourceType: "module",
   },
+  // )
   plugins: [
+    "sort-imports-es6-autofix",
     "import",
     "import-order-autofix",
     "prettier",
     "react",
-    "sort-imports-es6-autofix",
+    "jest",
   ],
   settings: {
+    "import/ignore": [/shared/],
+
     "import/resolver": {
+      node: {
+        moduleDirectory: ["node_modules"],
+      },
       "babel-module": {
-        alias: {
-          components: "components",
-          src: "./",
-          utils: "utils",
-        },
         root: ["./src"],
+        alias: {
+          src: "./",
+          shared: "./shared",
+          utils: "./shared/utils",
+          components: "./shared/components",
+        },
       },
     },
   },
@@ -75,11 +84,11 @@ const config = {
     "func-names": 0,
     "handle-callback-err": 1,
     "import-order-autofix/order": [
-      0,
+      2,
       {
         groups: [
           ["builtin", "external"],
-          ["index", "internal", "parent", "sibling"],
+          ["internal", "index", "parent", "sibling"],
         ],
         "newlines-between": "always",
       },
@@ -92,12 +101,15 @@ const config = {
         peerDependencies: false,
       },
     ],
+    "import/no-unresolved": [2, { ignore: ["shared"] }],
+    // "import/extensions": 0,
+
     "import/order": [
       2,
       {
         groups: [
           ["builtin", "external"],
-          ["index", "internal", "parent", "sibling"],
+          ["internal", "index", "parent", "sibling"],
         ],
         "newlines-between": "always",
       },
@@ -121,6 +133,7 @@ const config = {
       },
     ],
     "jsx-a11y/href-no-hash": 0,
+    "react/jsx-filename-extension": 0,
     "jsx-quotes": 1,
     "key-spacing": [
       2,
@@ -157,7 +170,18 @@ const config = {
         beforeLineComment: true,
       },
     ],
-    "max-len": [2, 80],
+    "max-len": [
+      2,
+      80,
+      {
+        ignoreComments: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
     "new-cap": 2,
     "newline-per-chained-call": [
       2,
@@ -337,6 +361,7 @@ const config = {
     "space-infix-ops": 2,
     strict: 1,
     "valid-typeof": 2,
+    "no-debugger": 0,
   },
 };
 

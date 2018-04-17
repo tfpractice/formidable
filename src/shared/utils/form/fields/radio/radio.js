@@ -1,0 +1,31 @@
+import Grid from "material-ui/Grid";
+import React from "react";
+import { FormHelperText, FormLabel } from "material-ui/Form";
+
+import RadioBase from "./base";
+
+const RadioBtn = ({ input, meta: { touched, error, warning }, ...rest }) => (
+  <Grid container justify="center" alignContent="center" alignItems="center">
+    <Grid item xs={12}>
+      <FormLabel>{input.name}</FormLabel>
+    </Grid>
+    <Grid item xs={12}>
+      <RadioBase {...input} {...rest} />
+    </Grid>
+    <Grid item xs={11}>
+      {touched &&
+        ((error && (
+          <FormHelperText className="selectList-error error">
+            {error}
+          </FormHelperText>
+        )) ||
+          (warning && (
+            <FormHelperText className="selectList-legend legend">
+              {warning}
+            </FormHelperText>
+          )))}
+    </Grid>
+  </Grid>
+);
+
+export default RadioBtn;
