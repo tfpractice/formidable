@@ -1,3 +1,11 @@
+import { Request } from "../../utils";
+
+const { rqConstants } = Request;
+
+export const USR_URL = `http://localhost:4000/users`;
+
+export const PREFIX = `USER_REQUEST`;
+
 export const SET_USERS = `SET_USERS`;
 
 export const GET_USERS = `GET_USERS`;
@@ -33,6 +41,8 @@ export const COLOR_OTHER = `Other`;
 export const AGES = [ AGE_0, AGE_1, AGE_2, AGE_3 ];
 
 export const COLORS = [ RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, COLOR_OTHER ];
+
+export const REQUEST_ACTIONS = rqConstants(PREFIX);
 
 export const USER_ACTIONS = new Set([
   SET_USERS,
